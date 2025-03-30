@@ -19,7 +19,9 @@
     "langchain": "^0.3.19",
     "puppeteer": "^24.4.0",
     "react": "^19.0.0",
+    "react-datepicker": "^8.2.1",
     "react-dom": "^19.0.0",
+    "react-router-dom": "^7.4.1",
     "tailwindcss": "^4.0.17",
     "tesseract.js": "^6.0.0"
   },
