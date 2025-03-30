@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from "react";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css"; // Import the DatePicker styles
 
 function EventsPage() {
   const [animate, setAnimate] = useState(true);
@@ -59,6 +61,10 @@ function EventsPage() {
     setFilters({ ...filters, [name]: value });
   };
 
+  const handleDateChange = (date) => {
+    setEventData({ ...eventData, dateTime: date });
+  };
+
   const handleCreateEvent = () => {
     const { name, dateTime, organization, location } = eventData;
 
@@ -92,8 +98,15 @@ function EventsPage() {
     });
 
   const formatDate = (dateString) => {
-    const options = { month: "long", day: "numeric", year: "numeric" };
-    return new Date(dateString).toLocaleDateString(undefined, options);
+    const options = { 
+      month: "long", 
+      day: "numeric", 
+      year: "numeric", 
+      hour: "numeric", 
+      minute: "numeric", 
+      hour12: true 
+    };
+    return new Date(dateString).toLocaleString(undefined, options);
   };
 
   return (
@@ -177,10 +190,10 @@ function EventsPage() {
               <div>
                 <h3 className="text-lg font-bold mb-2">{event.name}</h3>
                 <p className="text-lg font-bold mb-2">_____________</p>
-                <p className="text-xs text-left mb-1 ml-2">
+                <p className="text-xs text-left font-sm mb-1 ml-2">
                   Date: {formatDate(event.dateTime)}
                 </p>
-                <p className="text-xs text-left mb-1 ml-2">
+                <p className="text-xs text-left font-sm mb-1 ml-2">
                   Organization: {event.organization}
                 </p>
                 <p className="text-xs text-left ml-2">
@@ -222,6 +235,7 @@ function EventsPage() {
                   name="name"
                   value={eventData.name}
                   onChange={handleInputChange}
+                  placeholder="Enter event name"
                   className="w-full border border-gray-300 text-gray-700 rounded px-3 py-2 bg-white"
                 />
               </div>
@@ -229,12 +243,15 @@ function EventsPage() {
                 <label className="block text-gray-800 font-bold mb-2">
                   Date and Time
                 </label>
-                <input
-                  type="datetime-local"
-                  name="dateTime"
-                  value={eventData.dateTime}
-                  onChange={handleInputChange}
+                <DatePicker
+                  selected={eventData.dateTime ? new Date(eventData.dateTime) : null}
+                  onChange={handleDateChange}
+                  showTimeSelect
+                  timeFormat="HH:mm"
+                  timeIntervals={15}
+                  dateFormat="MMMM d, yyyy h:mm aa"
                   className="w-full border border-gray-300 text-gray-700 rounded px-3 py-2 bg-white"
+                  placeholderText="Select date and time"
                 />
               </div>
               <div className="mb-4">
@@ -246,6 +263,7 @@ function EventsPage() {
                   name="organization"
                   value={eventData.organization}
                   onChange={handleInputChange}
+                  placeholder="Enter organization name"
                   className="w-full border border-gray-300 text-gray-700 rounded px-3 py-2 bg-white"
                 />
               </div>
@@ -258,6 +276,7 @@ function EventsPage() {
                   name="location"
                   value={eventData.location}
                   onChange={handleInputChange}
+                  placeholder="Enter location"
                   className="w-full border border-gray-300 text-gray-700 rounded px-3 py-2 bg-white"
                 />
               </div>
