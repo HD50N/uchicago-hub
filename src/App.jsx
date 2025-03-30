@@ -20,10 +20,15 @@ function App() {
                     </button>
                 </nav>
             </header>
+            {/* Remove additional padding when rendering the map */}
             <main className="flex-grow">
-                {page === 'map' && <MapPage />}
+                {page === 'map' && (
+                    <div className="w-full h-full">
+                        <MapPage />
+                    </div>
+                )}
                 {page === 'events' && (
-                    <div className="container mx-auto p-8">
+                    <div className="container mx-auto p-8 h-full">
                         <EventsPage />
                     </div>
                 )}
