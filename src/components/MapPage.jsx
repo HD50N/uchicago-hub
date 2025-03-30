@@ -1,5 +1,5 @@
-import React from 'react';
-import { GoogleMap, useLoadScript, Marker } from '@react-google-maps/api';
+import React, { useState } from 'react';
+import { GoogleMap, useLoadScript, Marker, InfoWindow } from '@react-google-maps/api';
 
 const mapContainerStyle = {
   width: '100vw',
@@ -35,14 +35,20 @@ const locations = [
   {
     name: "Baker Dining Hall",
     position: { lat: 41.79451588124671, lng: -87.59902228803362 },
+    hours:
+      "Monday to Friday: 7:00 AM – 8:30 PM\nSaturday: 8:00 AM – 2:30 PM\nSunday: 8:00 AM – 8:30 PM",
   },
   {
     name: "Bartlett Dining Hall",
-    position: { lat: 41.792131851073485, lng: -87.59824251722922},
+    position: { lat: 41.792131851073485, lng: -87.59824251722922 },
+    hours:
+      "Monday to Friday: 7:00 AM – 8:30 PM\nSaturday: 8:00 AM – 8:30 PM\nSunday: 8:00 AM – 8:30 PM",
   },
   {
     name: "Cathey Dining Hall",
-    position: { lat: 41.785463993599784, lng: -87.60010858996223},
+    position: { lat: 41.785463993599784, lng: -87.60010858996223 },
+    hours:
+      "Monday to Friday: 7:00 AM – 8:30 PM\nSaturday: 8:00 AM – 2:30 PM\nSunday: 8:00 AM – 8:30 PM",
   },
   // Add more locations as needed
 ];
@@ -51,15 +57,17 @@ const MapPage = () => {
   const { isLoaded, loadError } = useLoadScript({
     googleMapsApiKey: GOOGLE_MAPS_API_KEY,
   });
-
+  
+  const [selectedLocation, setSelectedLocation] = useState(null);
+  
   if (loadError) return <div>Error loading maps</div>;
   if (!isLoaded) return <div>Loading Maps...</div>;
-
+  
   return (
     <GoogleMap 
       mapContainerStyle={mapContainerStyle}
       center={center}
-      zoom={15}  // Adjust zoom level as needed
+      zoom={15}
       options={options}
     >
       {locations.map((location) => (
@@ -67,8 +75,24 @@ const MapPage = () => {
           key={location.name}
           position={location.position}
           title={location.name}
+          onClick={() => {
+            console.log('Marker clicked:', location);
+            setSelectedLocation(location);
+          }}
         />
       ))}
+      
+      {selectedLocation && (
+        <InfoWindow
+          position={selectedLocation.position}
+          onCloseClick={() => setSelectedLocation(null)}
+        >
+          <div className="text-black bg-white p-4 rounded shadow-lg">
+            <h2 className="text-xl font-bold">{selectedLocation.name}</h2>
+            <pre className="text-sm whitespace-pre-wrap mt-2">{selectedLocation.hours}</pre>
+          </div>
+        </InfoWindow>
+      )}
     </GoogleMap>
   );
 };
