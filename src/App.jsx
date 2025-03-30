@@ -20,9 +20,13 @@ function App() {
                     </button>
                 </nav>
             </header>
-            <main className="flex-grow container mx-auto p-8">
+            <main className="flex-grow">
                 {page === 'map' && <MapPage />}
-                {page === 'events' && <EventsPage />}
+                {page === 'events' && (
+                    <div className="container mx-auto p-8">
+                        <EventsPage />
+                    </div>
+                )}
             </main>
             <footer className="bg-[#800000] py-4 text-center text-sm text-white">
                 &copy; 2025 UChicago Hub. All rights reserved.
