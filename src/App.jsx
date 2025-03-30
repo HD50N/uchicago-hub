@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-// import MapPage from './components/mappage.jsx';
+import MapPage from './components/mappage.jsx';
 import EventsPage from './components/EventsPage';
 
 function App() {
