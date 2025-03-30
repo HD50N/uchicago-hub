@@ -64,6 +64,44 @@ button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
+/* Light Gray Button with Maroon Hover */
+.button-light-gray {
+  background-color: #d3d3d3; /* Light gray */
+  color: #000; /* Black text */
+  border: 1px solid transparent;
+  border-radius: 8px;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  cursor: pointer;
+  transition: background-color 0.25s, border-color 0.25s;
+}
+.button-light-gray:hover {
+  background-color: #800000; /* Maroon */
+  color: #fff; /* White text */
+  border-color: #800000;
+}
+.button-light-gray:focus,
+.button-light-gray:focus-visible {
+  outline: 4px auto -webkit-focus-ring-color;
+}
+
+/* Square Block */
+.square-block {
+  width: 200px; /* Set width */
+  height: 200px; /* Set height to match width */
+  background-color: hsl(0, 100%, 92%); /* Light gray background */
+  border: 1px solid #800000; /* Light border */
+  border-radius: 8px; /* Optional rounded corners */
+  display: flex;
+  align-items: bottom;
+  justify-content: bottom;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+  font-size: 2rem;
+  font-weight: bold;
+  color: #333; /* Text color */
+}
 
 @media (prefers-color-scheme: light) {
   :root {
