@@ -87,20 +87,48 @@ button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 
-/* Square Block */
+/* Improved Square Block */
 .square-block {
-  width: 200px; /* Set width */
-  height: 200px; /* Set height to match width */
-  background-color: hsl(0, 100%, 92%); /* Light gray background */
-  border: 1px solid #800000; /* Light border */
-  border-radius: 8px; /* Optional rounded corners */
+  width: 100%; /* Full width on smaller screens */
+  max-width: 220px; /* Limit max width */
+  height: auto; /* Adjust height dynamically */
+  background: linear-gradient(135deg, #ffffff, #800000); /* Gradient background */
+  border: 1px solid #800000; /* Border color */
+  border-radius: 12px; /* Slightly more rounded corners */
   display: flex;
-  align-items: bottom;
-  justify-content: bottom;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Subtle shadow */
-  font-size: 2rem;
+  align-items: center; /* Center content vertically */
+  justify-content: center; /* Center content horizontally */
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15); /* Enhanced shadow for depth */
+  font-size: 1rem; /* Adjusted font size */
   font-weight: bold;
-  color: #333; /* Text color */
+  color: #fff; /* White text for contrast */
+  padding: 15px; /* Add padding for inner spacing */
+  text-align: center; /* Center text alignment */
+  transition: transform 0.3s, box-shadow 0.3s; /* Smooth hover effect */
+}
+
+.square-block:hover {
+  transform: translateY(-5px); /* Lift effect on hover */
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2); /* Stronger shadow on hover */
+}
+
+input {
+  outline: none; /* Remove default outline */
+  border: 1px solid #ccc; /* Default border color */
+  transition: border-color 0.25s, box-shadow 0.25s;
+}
+
+input:focus {
+  border-color: #800000; /* Maroon border on focus */
+  box-shadow: 0 0 4px rgba(128, 0, 0, 0.5); /* Subtle shadow on focus */
+}
+
+input:valid {
+  border-color: #ccc; /* Keep border color consistent */
+}
+
+input:invalid {
+  border-color: #ccc; /* Keep border color consistent */
 }
 
 @media (prefers-color-scheme: light) {
