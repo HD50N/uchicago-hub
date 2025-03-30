@@ -50,7 +50,6 @@ function EventsPage() {
 
     return () => clearInterval(interval); // Cleanup interval on component unmount
   }, []);
-
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setEventData({ ...eventData, [name]: value });
