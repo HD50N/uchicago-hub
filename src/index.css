@@ -86,20 +86,21 @@ button:focus-visible {
 .square-block {
   width: 220px; /* Fixed width */
   height: 220px; /* Fixed height */
-  background: linear-gradient(135deg, #ffffff, #800000); /* Gradient background */
-  border: 1px solid #800000; /* Border color */
-  border-radius: 12px; /* Slightly more rounded corners */
+  background: linear-gradient(135deg, #f0f0f0, #d3d3d3); /* Gradient of grey and white */
+  border: 1px solid #a9a9a9; /* Border color */
+  border-radius: 12px; /* Slightly rounded corners */
   display: flex;
   flex-direction: column; /* Stack content vertically */
   align-items: center; /* Center content horizontally */
-  justify-content: space-between; /* Space out content vertically */
-  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15); /* Enhanced shadow for depth */
+  justify-content: flex-start; /* Align content to the top */
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15); /* Subtle shadow for depth */
   font-size: 1rem; /* Adjusted font size */
   font-weight: bold;
-  color: #fff; /* White text for contrast */
+  color: #000; /* Black text */
   padding: 15px; /* Add padding for inner spacing */
   text-align: center; /* Center text alignment */
   transition: transform 0.3s, box-shadow 0.3s; /* Smooth hover effect */
+  position: relative; /* Enable positioning for child elements */
 }
 
 .square-block .event-name {
@@ -113,14 +114,19 @@ button:focus-visible {
 }
 
 .square-block .event-details {
-  height: 50%; /* Allocate the other half for details */
-  display: flex;
-  flex-direction: column; /* Stack details vertically */
-  justify-content: center; /* Center details vertically */
-  align-items: flex-start; /* Align details to the left */
+  position: absolute; /* Position at the bottom of the block */
+  bottom: 0; /* Align to the bottom */
+  width: 100%; /* Full width of the block */
+  background: rgba(169, 169, 169, 0.5); /* Darker shaded background */
+  padding: 10px; /* Add padding for spacing */
+  border-radius: 0 0 12px 12px; /* Rounded corners only at the bottom */
   font-size: 0.8rem; /* Smaller font for details */
-  text-align: left;
-  color: #fff; /* White text for contrast */
+  color: #000; /* Black text for contrast */
+  text-align: left; /* Align text to the left */
+}
+
+.square-block .event-details p {
+  margin: 5px 0; /* Add spacing between details */
 }
 
 .square-block:hover {

@@ -199,7 +199,7 @@ const locations = [
   {
     name: "Grounds of Being",
     type: "cafe",
-    position: { lat: 41.78928485046558, lng: -87.59976246880471 },
+    position: { lat: 41.788990472681924, lng: -87.59997500980577 },
     hours: "Monday–Friday: 7:45 AM – 4:00 PM\n Weekends: Closed",
   },
   {
