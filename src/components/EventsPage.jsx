@@ -126,13 +126,21 @@ function EventsPage() {
 
       {/* Main Content */}
       <div className="w-full p-0 flex flex-col md:flex-row">
+        
         {/* Left Section */}
         <div className="flex-1 pr-0 md:pr-4 mb-4 md:mb-0">
-          <p className="text-lg text-gray-600 mb-4">
-            Explore and create your events effortlessly.
+        <p className="text-lg text-gray-600 mb-4">
+        Explore and create your events effortlessly.
+        <button
+              onClick={() => setShowModal(true)}
+              className="button-light-gray font-bold transition duration-500 w-full"
+            >
+              Create Event
+            </button>
           </p>
           {/* Find Event Menu */}
           <div className="bg-gray-100 text-gray-600 p-4 rounded shadow-md">
+          
             <h2 className="text-xl font-bold mb-4">Find Event</h2>
             <div className="mb-4">
               <label className="block text-sm font-bold mb-2">Event Name</label>
@@ -170,12 +178,6 @@ function EventsPage() {
             <p className="text-sm text-gray-600 mb-4">
               Use the fields above to filter events dynamically.
             </p>
-            <button
-              onClick={() => setShowModal(true)}
-              className="button-light-gray font-bold transition duration-500 w-full"
-            >
-              Create Event
-            </button>
           </div>
         </div>
 

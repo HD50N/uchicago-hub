@@ -30,13 +30,13 @@ function App() {
           </button>
         </div>
         {/* Desktop Navigation */}
-        <nav className="hidden sm:flex space-x-6">
+        <nav className=" text-white hidden sm:flex space-x-6">
           <button onClick={() => setPage('map')} className="hover:underline focus:outline-none">
             Map
           </button>
           <button 
             onClick={() => setPage('events')} 
-            className="text-lg text-white hover:text-gray-200 focus:outline-none transition duration-200">
+            className="text-lg text-white hover:underline focus:outline-none transition duration-200">
             Events
           </button>
         </nav>
